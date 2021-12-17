@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Course Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<table border="1">
+<thead>
+<tr>
+<th>Stuff Number</th>
+<th>Teacher Name</th>
+<th>Teacher Email</th>
+<th>Office Phone#</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="t:${teacher}">
+<td th:text="${t.teacherId}"></td>
+<td th:text="${t.teacherName}"></td>
+<td th:text="${t.emailId}"></td>
+<td th:text="${t.phone}"></td>
+<td>
+<a th:href="@{/Teacher/update/{id}(id=${t.teacherId})}" class="btn-primary">Update</a>
+<a th:href="@{/Teacher/delete/{id}(id=${t.teacherId})}" class="btn-primary">Delete</a>
+</td>
+</tr>
+</tbody>
+</table>
+<form th:action="@{/Teacher/addCourse/{id}(id=${teacher.teacherId})}">
+<input type="submit" name="request" value="add Course" >
+</form>
+<table border="1">
+<thead>
+<tr>
+<th>Course Code</th>
+<th>Course Name</th>
+<th>Student Name</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="t:${teacher.courses}">
+<td th:text="${t.courseId}"></td>
+<td th:text="${t.courseName}"></td>
+<td th:text="${t.students}">
+</td>
+</tr>
+
+</tbody>
+</table>
+</form>
+<a th:href="@{/Teacher}" class="btn-primary">Back</a>
+</body>
+</html>

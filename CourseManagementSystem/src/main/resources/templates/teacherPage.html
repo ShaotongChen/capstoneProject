@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Course Management System</title>
+
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<a th:href="@{/NewTeacher}" class="btn btn-primary btn-sm mb-3"> Add Teacher </a>
+<a th:href="@{/}" class="btn btn-primary btn-sm mb-3">Back</a>
+<h1 class="text-center mb-3">Please Manage Teacher</h1>
+<table class="table">
+<thead class="thead-dark">
+<tr>
+<th>Stuff Number</th>
+<th>Teacher Name</th>
+<th>Teacher Email</th>
+<th>Teacher Phone</th>
+<th>Enter</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="t:${teachers}">
+<td th:text="${t.teacherId}" />
+<td th:text="${t.teacherName}"/>
+<td th:text="${t.emailId}"/>
+<td th:text="${t.phone}"/>
+<td>
+<a th:href="@{/Teacher/{id}(id=${t.teacherId})}" class="btn btn-parmary">Enter</a>
+</td>
+
+</tr>
+</tbody>
+
+</table>
+</body>
+</html>

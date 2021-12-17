@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Course Management System</title>
+
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<h1 class="text-center mb-3">Please add course</h1>
+<form action="#" th:action="@{/Student/addCourse/{id}(id=${student.studentNumber})}" method="POST">
+<table class="table">
+<thead class="thead-dark">
+<tr>
+<th>Course Code</th>
+<th>Course Name</th>
+<th>Course Credit</th>
+<th>Course Room#</th>
+<th>Insert</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="c:${courses}">
+<td th:text="${c.courseId}" />
+<td th:text="${c.courseName}"/>
+<td th:text="${c.credit}"/>
+<td th:text="${c.roomNum}"/>
+<td>
+<button type="submit" th:value="${c.courseId}" name="courseId">Add Course</button>
+
+</td>
+
+</tr>
+</tbody>
+</table>
+<a th:href="@{/Student/{id}(id=${student.studentNumber})}" class="btn-primary">Back</a>
+</form>
+</body>
+</html>
